@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Plan Recommendation</title>
+</head>
+<body>
+<h1>Meal Plan Recommendation</h1>
+<form action="/generate-meal-plan" method="get">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" value="<%= LocalDate.now() %>"><br><br>
+
+    <label for="div">Div:</label>
+    <select id="div" name="div">
+        <option value="0">Adult</option>
+        <option value="1">Student</option>
+    </select><br><br>
+
+    <button type="submit">Generate Meal Plan</button>
+</form>
+</body>
+</html>

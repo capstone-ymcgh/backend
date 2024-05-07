@@ -1,2 +1,2 @@
-# backend
-backend_repository
+mysql 연동 완료 <br/>
+5/7 식단 추천 알고리즘 구현

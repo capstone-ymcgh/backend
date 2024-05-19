@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Map;
 
 @Controller
 public class RecipeController {
@@ -18,14 +18,16 @@ public class RecipeController {
 
     @GetMapping("/meal-plan")
     public String showMealPlanForm() {
-        return "recipe_meal_plan"; //
+        return "recipe_meal_plan"; // 식단 생성 폼을 나타내는 HTML 템플릿의 이름을 반환합니다.
     }
 
     @GetMapping("/generate-meal-plan")
     @ResponseBody
-    public List<List<List<String>>> generateMealPlan(@RequestParam(required = false) String date,
-                                                     @RequestParam(required = false, defaultValue = "0") int div) {
+    public Map<String, Object> generateMealPlan(@RequestParam(required = false) String date,
+                                                @RequestParam(required = false, defaultValue = "0") int div,
+                                                @RequestParam(required = false, defaultValue = "1") int serving) {
         LocalDate selectedDate = (date != null) ? LocalDate.parse(date) : LocalDate.now();
-        return recipeService.recommendMonthlyMealPlan(selectedDate, div);
+        return recipeService.recommendMonthlyMealPlan(selectedDate, div, serving);
     }
 }
+
